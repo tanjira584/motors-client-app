@@ -29,7 +29,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="footer-link">
-                        <ul className="list-unstyled">
+                        <ul className="list-unstyled m-0 p-0">
                             <li>
                                 <a href=" ">help</a>
                             </li>
