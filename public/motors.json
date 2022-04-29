@@ -1,0 +1,50 @@
+[
+    {
+        "name": "CERTIFIED USED 2021 BMW M5",
+        "img": " https://i.ibb.co/j33FmkG/b1.jpg",
+        "desc": "Bayerische Motoren Werke AG, commonly referred to as BMW, is a German multinational corporate manufacturer of luxury vehicles and motorcycles headquartered in Munich, Bavaria, Germany.",
+        "price": 25500,
+        "supplyer": "BMW",
+        "quantity": 16
+    },
+    {
+        "name": "NEW 2015 KIA SOUL",
+        "img": "https://i.ibb.co/5MLnWK7/k1.jpg",
+        "desc": "Kia Corporation, commonly known as Kia, is a South Korean multinational automobile manufacturer headquartered in Seoul, South Korea. It is South Korea's second largest automobile manufacturer after Hyundai Motor Company, with sales of over 2.8 million vehicles in 2019.",
+        "price": 80000,
+        "supplyer": "KIA",
+        "quantity": 20
+    },
+    {
+        "name": "ACURA ILX 2021 LIMITED",
+        "img": "https://i.ibb.co/PCJWwWP/a1.jpg",
+        "desc": "Acura is the luxury and performance division of Japanese automaker Honda, based primarily in North America. The brand was launched in the United States and Canada on March 27, 1986, marketing luxury and performance automobiles.",
+        "price": 45500,
+        "supplyer": "ACURA",
+        "quantity": 6
+    },
+    {
+        "name": "Bentley Flying Spur",
+        "img": "https://i.ibb.co/VpWSg8B/ben1.jpg",
+        "desc": "Bentley Motors Limited is a British manufacturer and marketer of luxury cars and SUVs, and a subsidiary of the Volkswagen Group since 1998. Headquartered in Crewe, England, the company was founded as Bentley Motors Limited by W. O",
+        "price": 50500,
+        "supplyer": "BENTLY",
+        "quantity": 10
+    },
+    {
+        "name": "USED 2010 FORD FOCUS",
+        "img": "https://i.ibb.co/y6W3fs0/f1-1.jpg",
+        "desc": "Ford Motor Company is an American multinational automobile manufacturer headquartered in Dearborn, Michigan, United States. It was founded by Henry Ford and incorporated on June 16, 1903.",
+        "price": 25000,
+        "supplyer": "FORD",
+        "quantity": 12
+    },
+    {
+        "name": "Honda Accord 2021",
+        "img": "https://i.ibb.co/Q8r5qWH/hon1.jpg",
+        "desc": "Honda Motor Company, Ltd. is a Japanese public multinational conglomerate manufacturer of automobiles, motorcycles, and power equipment, headquartered in Minato, Tokyo, Japan.",
+        "price": 30000,
+        "supplyer": "HONDA",
+        "quantity": 8
+    }
+]

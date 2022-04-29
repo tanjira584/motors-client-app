@@ -1,0 +1,39 @@
+.home-banner {
+    padding: 150px 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.home-banner h1 {
+    color: #f0bb3a;
+    font-size: 70px;
+    font-weight: bold;
+    margin: 0;
+}
+.home-banner h3 {
+    color: #fff;
+}
+/* -------System Filter----------*/
+.stm-filter-wrp {
+    margin-top: -75px;
+    background-color: #153e4b;
+    padding: 50px;
+}
+.filter-box {
+    width: 18%;
+    margin: 0 1%;
+}
+.filter-box select,
+.filter-box input {
+    width: 100%;
+    padding: 8px;
+    color: #5e6061;
+}
+.filter-box button {
+    width: 100%;
+    padding: 8px;
+    background-color: #1bc744;
+    border: 1px solid #1bc744;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+}

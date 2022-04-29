@@ -1,0 +1,15 @@
+.header-main {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.header-main nav {
+    background-image: linear-gradient(rgb(0 0 0 / 70%), rgb(0 0 0 / 70%));
+    padding: 20px 0;
+}
+.main-menu li a {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+}
