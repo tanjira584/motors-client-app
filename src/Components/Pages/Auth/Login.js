@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
     useSignInWithEmailAndPassword,
     useSendPasswordResetEmail,
+    useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
@@ -14,7 +15,10 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending, error] =
         useSendPasswordResetEmail(auth);
-    if (euser) {
+
+    const [signInWithGoogle, guser, gloading, gerror] =
+        useSignInWithGoogle(auth);
+    if (euser || guser) {
         toast("Logged in successfully");
     }
     const handleChange = (e) => {
@@ -37,7 +41,9 @@ const Login = () => {
 
             <div className="me-4">
                 <div className="google-login px-5 py-3">
-                    <button>Login With Google</button>
+                    <button onClick={() => signInWithGoogle()}>
+                        Login With Google
+                    </button>
                     <span>For testing:</span>
                     <br />
                     <span>Email: demo@gmail.com</span>
