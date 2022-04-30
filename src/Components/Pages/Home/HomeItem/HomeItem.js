@@ -41,7 +41,7 @@ const HomeItem = () => {
                         </div>
                     </div>
                     <div className="show-all-btn text-center mt-5">
-                        <button className="px-5">Show All</button>
+                        <button className="">Show All</button>
                     </div>
                 </div>
             </div>

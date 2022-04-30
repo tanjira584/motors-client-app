@@ -1,0 +1,19 @@
+.counter-area {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.count-icon .icon {
+    font-size: 70px;
+}
+.count-number {
+    margin-left: 16px;
+}
+.count-number h2 {
+    font-size: 40px;
+}
+.count-number span {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
