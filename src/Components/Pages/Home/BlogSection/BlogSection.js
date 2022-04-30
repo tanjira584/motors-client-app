@@ -21,7 +21,7 @@ const BlogSection = () => {
                                 <img
                                     style={{ width: "100%" }}
                                     src={blog1}
-                                    alt=""
+                                    alt="blog-img"
                                 />
                             </div>
                             <div
