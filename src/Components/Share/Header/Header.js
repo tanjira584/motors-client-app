@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import logo from "../../../images/logo.svg";
 import headerbg from "../../../images/header-bg.png";
 import "./Header.css";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+    const [auser, aloading, aerror] = useAuthState(auth);
     return (
         <div
             className="header-main"
@@ -41,6 +45,16 @@ const Header = () => {
                                     Inventory
                                 </Link>
                             </li>
+                            {auser && (
+                                <li className="nav-item">
+                                    <button
+                                        onClick={() => signOut(auth)}
+                                        className="nav-link bg-transparent border-0"
+                                    >
+                                        Signout
+                                    </button>
+                                </li>
+                            )}
                             <li className="nav-item">
                                 <Link to="/login" className="nav-link">
                                     Login/Register

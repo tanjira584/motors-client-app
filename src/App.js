@@ -4,6 +4,8 @@ import Home from "./Components/Pages/Home/Home";
 import Auth from "./Components/Pages/Auth/Auth";
 import InventoryDetails from "./Components/Pages/Inventory/InventoryDetails";
 import Inventory from "./Components/Pages/Inventory/Inventory";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
@@ -20,6 +22,7 @@ function App() {
                     element={<InventoryDetails></InventoryDetails>}
                 ></Route>
             </Routes>
+            <ToastContainer></ToastContainer>
         </div>
     );
 }

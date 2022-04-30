@@ -15,13 +15,16 @@ const Footer = () => {
             <div className="container-md">
                 <div className="footer-top d-flex align-items-center justify-content-between">
                     <div className="search-box">
-                        <div class="input-group mb-3">
+                        <div className="input-group mb-3">
                             <input
                                 type="text"
-                                class="form-control"
+                                className="form-control"
                                 placeholder="Search..."
                             />
-                            <span class="input-group-text" id="basic-addon1">
+                            <span
+                                className="input-group-text"
+                                id="basic-addon1"
+                            >
                                 <FontAwesomeIcon
                                     icon={faSearch}
                                 ></FontAwesomeIcon>
