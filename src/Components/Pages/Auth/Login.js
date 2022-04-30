@@ -1,17 +1,35 @@
 import React, { useState } from "react";
+import {
+    useSignInWithEmailAndPassword,
+    useSendPasswordResetEmail,
+} from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
 const Login = () => {
     const [user, setUser] = useState({ email: "", password: "" });
 
+    const [signInWithEmailAndPassword, euser, eloading, eerror] =
+        useSignInWithEmailAndPassword(auth);
+
+    const [sendPasswordResetEmail, sending, error] =
+        useSendPasswordResetEmail(auth);
+    if (euser) {
+        toast("Logged in successfully");
+    }
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(user);
-
+        signInWithEmailAndPassword(user.email, user.password);
         e.target.reset();
         setUser({ email: "", password: "" });
+    };
+    const handlePasswordReset = async () => {
+        await sendPasswordResetEmail(user.email);
+        toast("Sent a password reset email");
     };
     return (
         <div>
@@ -66,7 +84,10 @@ const Login = () => {
                     </div>
                     <p className="m-0 mb-3 text-light">
                         Forgot your password{" "}
-                        <button className="bg-transparent border-0 text-primary">
+                        <button
+                            onClick={handlePasswordReset}
+                            className="bg-transparent border-0 text-primary"
+                        >
                             Reset password
                         </button>
                     </p>
