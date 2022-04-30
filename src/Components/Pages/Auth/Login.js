@@ -4,11 +4,15 @@ import {
     useSendPasswordResetEmail,
     useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 
 const Login = () => {
     const [user, setUser] = useState({ email: "", password: "" });
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
 
     const [signInWithEmailAndPassword, euser, eloading, eerror] =
         useSignInWithEmailAndPassword(auth);
@@ -19,6 +23,7 @@ const Login = () => {
     const [signInWithGoogle, guser, gloading, gerror] =
         useSignInWithGoogle(auth);
     if (euser || guser) {
+        navigate(from, { replace: true });
         toast("Logged in successfully");
     }
     const handleChange = (e) => {
