@@ -1,0 +1,33 @@
+.auth-area {
+    background-color: #f0f2f5;
+}
+.login-form {
+    background-color: #153e4d;
+}
+.signup-form {
+    background-color: #fff;
+    border-top: 4px solid #153e4d;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+.google-login {
+    background-color: #fff;
+}
+.google-login button {
+    width: 100%;
+    padding: 8px;
+    background-color: #1bc744;
+    text-transform: uppercase;
+    font-size: 14;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid #1bc744;
+}
+.auth-area form input[type="submit"] {
+    padding: 8px 50px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #1bc744;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #1bc744;
+}

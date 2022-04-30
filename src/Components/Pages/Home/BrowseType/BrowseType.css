@@ -1,0 +1,12 @@
+.browse-type {
+    border-bottom: 5px solid #153e4d;
+}
+.browse-type .make,
+.browse-type .type {
+    text-align: center;
+}
+.browse-type .make img,
+.browse-type .type img {
+    width: 100%;
+    height: 80px;
+}
