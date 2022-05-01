@@ -1,0 +1,110 @@
+.inventory-model h5 {
+    color: #1bc744;
+}
+.delivered-btn button {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #1bc743;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-radius: 2px;
+    border: 1px solid #1bc743;
+}
+.price-seal {
+    position: relative;
+    background-color: #1bc744;
+    padding: 4px 16px;
+}
+.price-seal::before {
+    position: absolute;
+    content: " ";
+    display: inline-block;
+    right: 100%;
+    top: 0;
+    height: 100%;
+    border-top: 55px solid transparent;
+    border-left: 10px solid transparent;
+    border-right: 25px solid #1bc744;
+}
+.price-seal .regular {
+    line-height: 1em;
+    text-decoration: line-through;
+}
+.price-seal .normal h4 {
+    line-height: 1em;
+    color: #fff;
+}
+.inventory-feature {
+    margin-top: 24px;
+    border-bottom: 5px solid #153e4d;
+}
+
+.inventory-feature ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+.inventory-feature ul li .icon {
+    color: #1bc744;
+    margin-right: 12px;
+}
+
+.update-stock,
+.dealer-info {
+    border-top: 5px solid #153e4d;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+.update-stock form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    outline: none;
+    border: 1px solid #cccccc;
+}
+.update-stock form input[type="submit"] {
+    background-color: #1bc743;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid #1bc743;
+}
+.dealer-logo ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.dealer-logo ul li {
+    display: inline-block;
+    margin-left: 2px;
+}
+.dealer-logo ul li .icon {
+    color: #ffb218;
+}
+.phone-dealer .icon,
+.location-dealer .icon {
+    font-size: 22px;
+    color: #1bc743;
+}
+.phone-dealer span,
+.phone-dealer span {
+    font-size: 22px;
+}
+.whatsup-btn button {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #cccccc;
+    font-weight: 500;
+    text-transform: uppercase;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 15%);
+}
+.whatsup-btn button .icon {
+    font-size: 20px;
+    color: #1bc743;
+    font-weight: bold;
+}
