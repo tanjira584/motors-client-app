@@ -1,0 +1,28 @@
+.ad-form form {
+    border-top: 5px solid #153e4d;
+}
+.input-box select,
+.input-box input {
+    width: 100%;
+    padding: 8px;
+}
+
+.listing-input {
+    background-color: #153e4d;
+    color: #fff;
+    padding: 50px;
+}
+.optional-input,
+.item-img-price {
+    padding-bottom: 16px;
+    border-bottom: 5px solid #153e4d;
+}
+.product-note input[type="submit"] {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #1bc744;
+    color: #fff;
+    padding: 40px;
+    border: 1px solid #1bc744;
+}
