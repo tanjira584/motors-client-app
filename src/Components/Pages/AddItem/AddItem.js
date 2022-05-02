@@ -1,13 +1,71 @@
 import { faRoad } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../Share/Footer/Footer";
 import Header from "../../Share/Header/Header";
 import "./AddItem.css";
 
 const AddItem = () => {
+    const [item, setItem] = useState({
+        condition: "",
+        make: "",
+        type: "",
+        model: "",
+        milage: "",
+        engine: "",
+        fuelType: "",
+        transmission: "",
+        color: "",
+        stock: 0,
+        img: "",
+        regular: 0,
+        normal: 0,
+        notes: "",
+        dName: "",
+        dLogo: "",
+        dLocation: "",
+        dPhone: "",
+        dWhatsup: "",
+        dRating: 0,
+    });
+
+    const handleChange = (e) => {
+        setItem({ ...item, [e.target.name]: e.target.value });
+    };
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(item);
+        fetch("http://localhost:5000/motors", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(item),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                alert("Item Added successfully");
+                e.target.reset();
+                setItem({
+                    condition: "",
+                    make: "",
+                    type: "",
+                    model: "",
+                    milage: 0,
+                    engine: "",
+                    fuelType: "",
+                    transmission: "",
+                    color: "",
+                    stock: 0,
+                    img: "",
+                    regular: 0,
+                    normal: 0,
+                    notes: "",
+                });
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
     return (
         <div>
@@ -24,67 +82,90 @@ const AddItem = () => {
                             <div className="listing-input ">
                                 <div className="row">
                                     <div className="col-md-3">
-                                        <div class="input-box">
+                                        <div className="input-box">
                                             <h6>Conditions*</h6>
-                                            <select name="" id="">
+                                            <select
+                                                name="condition"
+                                                id=""
+                                                onChange={handleChange}
+                                            >
                                                 <option value="">
                                                     Select Condition
                                                 </option>
-                                                <option value="">New</option>
-                                                <option value="">Used</option>
+                                                <option value="new">New</option>
+                                                <option value="used">
+                                                    Used
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
-                                        <div class="input-box">
+                                        <div className="input-box">
                                             <h6>Makes*</h6>
-                                            <select name="" id="">
+                                            <select
+                                                name="make"
+                                                id=""
+                                                onChange={handleChange}
+                                            >
                                                 <option value="">
                                                     Select Make
                                                 </option>
-                                                <option value="">
+                                                <option value="bentley">
                                                     Bentley
                                                 </option>
-                                                <option value="">KIA</option>
-                                                <option value="">
+                                                <option value="kia">KIA</option>
+                                                <option value="hyundai">
                                                     Hyundai
                                                 </option>
-                                                <option value="">Ford</option>
-                                                <option value="">BMW</option>
-                                                <option value="">ACURA</option>
+                                                <option value="ford">
+                                                    Ford
+                                                </option>
+                                                <option value="bmw">BMW</option>
+                                                <option value="acura">
+                                                    ACURA
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
-                                        <div class="input-box">
+                                        <div className="input-box">
                                             <h6>Types*</h6>
-                                            <select name="" id="">
+                                            <select
+                                                name="type"
+                                                id=""
+                                                onChange={handleChange}
+                                            >
                                                 <option value="">
                                                     Select Types
                                                 </option>
-                                                <option value="">
+                                                <option value="convertible">
                                                     Convertible
                                                 </option>
-                                                <option value="">
+                                                <option value="pickups">
                                                     Pickups
                                                 </option>
-                                                <option value="">
+                                                <option value="minivan">
                                                     Minivan
                                                 </option>
-                                                <option value="">Sedan</option>
-                                                <option value="">Sports</option>
-                                                <option value="">SUV</option>
+                                                <option value="sedan">
+                                                    Sedan
+                                                </option>
+                                                <option value="sports">
+                                                    Sports
+                                                </option>
+                                                <option value="suv">SUV</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div className="col-md-3">
-                                        <div class="input-box">
+                                        <div className="input-box">
                                             <h6>Select Models*</h6>
                                             <input
                                                 type="text"
                                                 name="model"
                                                 id=""
                                                 placeholder="Enter model"
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -93,10 +174,10 @@ const AddItem = () => {
                             <div className="optional-input mt-4">
                                 <div className="row gx-5">
                                     <div className="col-md-4">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                             <label
-                                                for="milage"
-                                                class="col-sm-4 col-form-label"
+                                                htmlFor="milage"
+                                                className="col-sm-4 col-form-label"
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
@@ -104,21 +185,23 @@ const AddItem = () => {
                                                 ></FontAwesomeIcon>
                                                 Milage
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div className="col-sm-8">
                                                 <input
                                                     type="number"
-                                                    class="form-control"
+                                                    className="form-control"
                                                     id="milage"
+                                                    name="milage"
                                                     placeholder="Milage"
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                             <label
-                                                for="engine"
-                                                class="col-sm-4 col-form-label"
+                                                htmlFor="engine"
+                                                className="col-sm-4 col-form-label"
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
@@ -126,21 +209,23 @@ const AddItem = () => {
                                                 ></FontAwesomeIcon>
                                                 Engine
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div className="col-sm-8">
                                                 <input
                                                     type="number"
-                                                    class="form-control"
+                                                    className="form-control"
                                                     id="engine"
+                                                    name="engine"
                                                     placeholder="Engine type"
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                             <label
-                                                for="fuel-type"
-                                                class="col-sm-4 col-form-label"
+                                                htmlFor="fuel-type"
+                                                className="col-sm-4 col-form-label"
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
@@ -148,28 +233,29 @@ const AddItem = () => {
                                                 ></FontAwesomeIcon>
                                                 Fuel Type
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div className="col-sm-8">
                                                 <select
                                                     className="form-control"
-                                                    name=""
+                                                    name="fuelType"
                                                     id=""
+                                                    onChange={handleChange}
                                                 >
                                                     <option value="">
                                                         Select fuel type
                                                     </option>
-                                                    <option value="">
+                                                    <option value="diesel">
                                                         Diesel
                                                     </option>
-                                                    <option value="">
+                                                    <option value="electric">
                                                         Electric
                                                     </option>
-                                                    <option value="">
+                                                    <option value="ethanol">
                                                         Ethanol
                                                     </option>
-                                                    <option value="">
+                                                    <option value="fuel">
                                                         Fuel
                                                     </option>
-                                                    <option value="">
+                                                    <option value="gasoline">
                                                         Gasoline
                                                     </option>
                                                 </select>
@@ -177,10 +263,10 @@ const AddItem = () => {
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                             <label
-                                                for="transmission"
-                                                class="col-sm-4 col-form-label"
+                                                htmlFor="transmission"
+                                                className="col-sm-4 col-form-label"
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
@@ -188,22 +274,23 @@ const AddItem = () => {
                                                 ></FontAwesomeIcon>
                                                 Transmission
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div className="col-sm-8">
                                                 <select
                                                     className="form-control"
-                                                    name=""
+                                                    name="transmission"
                                                     id=""
+                                                    onChange={handleChange}
                                                 >
                                                     <option value="">
                                                         Transmission
                                                     </option>
-                                                    <option value="">
+                                                    <option value="manual">
                                                         Manual
                                                     </option>
-                                                    <option value="">
+                                                    <option value="automatic">
                                                         Automatic
                                                     </option>
-                                                    <option value="">
+                                                    <option value="semi-automatic">
                                                         Semi-Automatic
                                                     </option>
                                                 </select>
@@ -211,10 +298,10 @@ const AddItem = () => {
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                             <label
-                                                for="color"
-                                                class="col-sm-4 col-form-label"
+                                                htmlFor="color"
+                                                className="col-sm-4 col-form-label"
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
@@ -222,28 +309,29 @@ const AddItem = () => {
                                                 ></FontAwesomeIcon>
                                                 Color
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div className="col-sm-8">
                                                 <select
                                                     className="form-control"
-                                                    name=""
+                                                    name="color"
                                                     id=""
+                                                    onChange={handleChange}
                                                 >
                                                     <option value="">
                                                         Interrior Color
                                                     </option>
-                                                    <option value="">
+                                                    <option value="grey">
                                                         Grey
                                                     </option>
-                                                    <option value="">
+                                                    <option value="brown">
                                                         Brown
                                                     </option>
-                                                    <option value="">
+                                                    <option value="jet-black">
                                                         Jet-Black
                                                     </option>
-                                                    <option value="">
+                                                    <option value="jet-red">
                                                         Jet-Red
                                                     </option>
-                                                    <option value="">
+                                                    <option value="beige">
                                                         Beige
                                                     </option>
                                                 </select>
@@ -251,10 +339,10 @@ const AddItem = () => {
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="row mb-3">
+                                        <div className="row mb-3">
                                             <label
-                                                for="stock"
-                                                class="col-sm-4 col-form-label"
+                                                htmlFor="stock"
+                                                className="col-sm-4 col-form-label"
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
@@ -262,12 +350,14 @@ const AddItem = () => {
                                                 ></FontAwesomeIcon>
                                                 Stock*
                                             </label>
-                                            <div class="col-sm-8">
+                                            <div className="col-sm-8">
                                                 <input
                                                     type="number"
-                                                    class="form-control"
+                                                    className="form-control"
                                                     id="stock"
+                                                    name="stock"
                                                     placeholder="Stock*"
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                         </div>
@@ -281,50 +371,180 @@ const AddItem = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4">
-                                        <div class="mb-3">
+                                        <div className="mb-3">
                                             <label
-                                                for="img-url"
-                                                class="form-label"
+                                                htmlFor="img-url"
+                                                className="form-label"
                                             >
                                                 Image Url*
                                             </label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 id="img-url"
+                                                name="img"
                                                 placeholder="Enter Image url"
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="mb-3">
+                                        <div className="mb-3">
                                             <label
-                                                for="regular-price"
-                                                class="form-label"
+                                                htmlFor="regular-price"
+                                                className="form-label"
                                             >
                                                 Regular Price*($)
                                             </label>
                                             <input
                                                 type="number"
-                                                class="form-control"
+                                                className="form-control"
                                                 id="regular-price"
+                                                name="regular"
                                                 placeholder="Enter Regular Price"
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div class="mb-3">
+                                        <div className="mb-3">
                                             <label
-                                                for="normal-price"
-                                                class="form-label"
+                                                htmlFor="normal-price"
+                                                className="form-label"
                                             >
                                                 Regular/Sell Price*($)
                                             </label>
                                             <input
                                                 type="text"
-                                                class="form-control"
+                                                className="form-control"
                                                 id="normal-price"
+                                                name="normal"
                                                 placeholder="Enter Selling Price"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="dealer-form">
+                                <div className="d-flex align-items-center justify-content-between py-4">
+                                    <h5>Dealer Information</h5>
+                                    <h5>
+                                        <span
+                                            style={{
+                                                color: "rgb(27, 199, 68)",
+                                            }}
+                                        >
+                                            Step 3
+                                        </span>
+                                    </h5>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-name"
+                                                className="form-label"
+                                            >
+                                                Dealer Name
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="dealer-name"
+                                                placeholder="Enter Dealer Name"
+                                                name="dName"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-phone"
+                                                className="form-label"
+                                            >
+                                                Dealer Phone
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="dealer-phone"
+                                                placeholder="Enter Phone Number"
+                                                name="dPhone"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-logo"
+                                                className="form-label"
+                                            >
+                                                Dealer Logo URL
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="dealer-logo"
+                                                placeholder="Enter Logo Url"
+                                                name="dLogo"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-rating"
+                                                className="form-label"
+                                            >
+                                                Dealer Rating
+                                            </label>
+                                            <input
+                                                type="number"
+                                                className="form-control"
+                                                id="dealer-rating"
+                                                placeholder="Enter Rating"
+                                                name="dRating"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-whatsup-link"
+                                                className="form-label"
+                                            >
+                                                Dealer Whatsup Link
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="dealer-whatsup-link"
+                                                placeholder="Enter Whatsup Link"
+                                                name="dWhatsup"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-location"
+                                                className="form-label"
+                                            >
+                                                Dealer Location
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="dealer-location"
+                                                name="dLocation"
+                                                placeholder="Enter Dealer Location"
+                                                onChange={handleChange}
                                             />
                                         </div>
                                     </div>
@@ -335,11 +555,12 @@ const AddItem = () => {
                                     <div className="col-md-8">
                                         <h4>Product Note:</h4>
                                         <textarea
-                                            name=""
+                                            name="notes"
                                             id=""
                                             cols="30"
                                             rows="4"
                                             className="form-control"
+                                            onChange={handleChange}
                                         ></textarea>
                                     </div>
                                     <div className="col-md-4">

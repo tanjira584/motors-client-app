@@ -5,50 +5,59 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import d1 from "../../../../images/d1.png";
+import { useNavigate } from "react-router-dom";
 
-const Item = () => {
+const Item = ({ motor }) => {
+    const {
+        model,
+        stock,
+        regular,
+        img,
+        normal,
+        milage,
+        fuelType,
+        transmission,
+        notes,
+        dLogo,
+    } = motor;
+    const navigate = useNavigate();
     return (
         <div className="home-item">
             <div className="img mb-3">
-                <img
-                    className="img-fluid"
-                    src="https://i.ibb.co/j33FmkG/b1.jpg"
-                    alt=""
-                />
+                <img className="img-fluid" src={img} alt="" />
                 <div className="speciality">Special</div>
             </div>
             <div className="modelPrice d-flex justify-content-between">
                 <div className="home-model">
-                    <h6>NEW LAMBORGHINI URUS 2021</h6>
+                    <h6>{model}</h6>
                     <p className="m-0">
-                        <span>Stock:</span> 20
+                        <span>Stock:</span> {stock}
                     </p>
                 </div>
                 <div className="home-price">
-                    <div className="regular">$30000</div>
-                    <div className="normal">$27000</div>
+                    <div className="regular">${regular}</div>
+                    <div className="normal">${normal}</div>
                 </div>
             </div>
             <hr className="mb-2" />
             <div className="vehicle-condition">
                 <ul>
                     <li>
-                        5000 mi{" "}
+                        {milage} mi{" "}
                         <FontAwesomeIcon
                             className="icon"
                             icon={faRoad}
                         ></FontAwesomeIcon>
                     </li>
                     <li>
-                        18/100
+                        {fuelType}
                         <FontAwesomeIcon
                             className="icon"
                             icon={faGasPump}
                         ></FontAwesomeIcon>
                     </li>
                     <li>
-                        Manual
+                        {transmission}
                         <FontAwesomeIcon
                             className="icon"
                             icon={faArrowUpWideShort}
@@ -57,17 +66,17 @@ const Item = () => {
                 </ul>
             </div>
             <div className="item-description py-3">
-                <p className="m-0">
-                    Kia Corporation, commonly known as Kia, is a South Korean
-                    multinational automobile manufacturer headquartered in
-                    Seoul, South Korea.
-                </p>
+                <p className="m-0">{notes.substr(0, 130) + "..."}</p>
                 <div className="d-flex justify-content-between align-items-center mt-3">
                     <div style={{ width: "50%" }} className="supplyer">
-                        <img src={d1} alt="" />
+                        <img src={dLogo} alt="" />
                     </div>
                     <div className="update-btn">
-                        <button>Update Stock</button>
+                        <button
+                            onClick={() => navigate(`/inventory/${motor._id}`)}
+                        >
+                            Update Stock
+                        </button>
                     </div>
                 </div>
             </div>

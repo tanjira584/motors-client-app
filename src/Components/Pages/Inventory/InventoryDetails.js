@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../../Share/Footer/Footer";
 import Header from "../../Share/Header/Header";
-import blog1 from "../../../images/blog1.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faGasPump,
@@ -12,10 +11,55 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./InventoryDetails.css";
 import { faStarHalfAlt } from "@fortawesome/free-regular-svg-icons";
-import d1 from "../../../images/d1.png";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { useParams } from "react-router-dom";
+import useMotor from "../../../hooks/useMotor";
 
 const InventoryDetails = () => {
+    const { id } = useParams();
+    const [quantity, setQty] = useState(0);
+    const [motor] = useMotor(id, quantity);
+    const {
+        condition,
+        make,
+        type,
+        model,
+        milage,
+        engine,
+        fuelType,
+        transmission,
+        color,
+        stock,
+        img,
+        regular,
+        normal,
+        notes,
+        dName,
+        dLogo,
+        dLocation,
+        dPhone,
+    } = motor;
+    const handleStock = (e) => {
+        setQty(e.target.value);
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const qty = parseInt(quantity);
+        const uri = `http://localhost:5000/motor/${id}`;
+        fetch(uri, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ qty }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                alert("Stock Update Successfully");
+                e.target.reset();
+                setQty(0);
+            });
+    };
     return (
         <div>
             <Header></Header>
@@ -27,14 +71,16 @@ const InventoryDetails = () => {
                         <div className="inventory-details">
                             <div className="modelPrice d-flex justify-content-between">
                                 <div className="inventory-model">
-                                    <h5>New</h5>
-                                    <h4>NEW LAMBORGHINI URUS 2021</h4>
+                                    <h5>{condition}</h5>
+                                    <h4>{model}</h4>
                                 </div>
                                 <div className="inventory-price">
                                     <div className="price-seal">
-                                        <div className="regular">$30000</div>
+                                        <div className="regular">
+                                            ${regular}
+                                        </div>
                                         <div className="normal">
-                                            <h4>$27000</h4>
+                                            <h4>${normal}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +92,7 @@ const InventoryDetails = () => {
                                         <span style={{ color: "#1bc743" }}>
                                             Stock:{" "}
                                         </span>{" "}
-                                        20
+                                        {stock}
                                     </h4>
                                 </div>
                                 <div className="delivered-btn">
@@ -56,7 +102,7 @@ const InventoryDetails = () => {
                             <div className="img">
                                 <img
                                     style={{ width: "100%" }}
-                                    src={blog1}
+                                    src={img}
                                     alt=""
                                 />
                             </div>
@@ -68,10 +114,34 @@ const InventoryDetails = () => {
                                                 icon={faRoad}
                                                 className="icon"
                                             ></FontAwesomeIcon>
+                                            <span>Make</span>
+                                        </div>
+                                        <div>
+                                            <h5>{make}</h5>
+                                        </div>
+                                    </li>
+                                    <li className="border-bottom d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <FontAwesomeIcon
+                                                icon={faRoad}
+                                                className="icon"
+                                            ></FontAwesomeIcon>
+                                            <span>Type</span>
+                                        </div>
+                                        <div>
+                                            <h5>{type}</h5>
+                                        </div>
+                                    </li>
+                                    <li className="border-bottom d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <FontAwesomeIcon
+                                                icon={faRoad}
+                                                className="icon"
+                                            ></FontAwesomeIcon>
                                             <span>Stock Id</span>
                                         </div>
                                         <div>
-                                            <h5>3984</h5>
+                                            <h5>{motor._id}</h5>
                                         </div>
                                     </li>
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
@@ -83,7 +153,7 @@ const InventoryDetails = () => {
                                             <span>Milage</span>
                                         </div>
                                         <div>
-                                            <h5>100 mi</h5>
+                                            <h5>{milage} mi</h5>
                                         </div>
                                     </li>
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
@@ -95,7 +165,7 @@ const InventoryDetails = () => {
                                             <span>Fuel Type</span>
                                         </div>
                                         <div>
-                                            <h5>LPG autogas</h5>
+                                            <h5>{fuelType}</h5>
                                         </div>
                                     </li>
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
@@ -107,7 +177,7 @@ const InventoryDetails = () => {
                                             <span>Engine</span>
                                         </div>
                                         <div>
-                                            <h5>6.2L v8</h5>
+                                            <h5>{engine}</h5>
                                         </div>
                                     </li>
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
@@ -119,7 +189,7 @@ const InventoryDetails = () => {
                                             <span>Transmission</span>
                                         </div>
                                         <div>
-                                            <h5>Manual</h5>
+                                            <h5>{transmission}</h5>
                                         </div>
                                     </li>
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
@@ -131,7 +201,7 @@ const InventoryDetails = () => {
                                             <span>Color</span>
                                         </div>
                                         <div>
-                                            <h5>Grey</h5>
+                                            <h5>{color}</h5>
                                         </div>
                                     </li>
                                 </ul>
@@ -139,43 +209,31 @@ const InventoryDetails = () => {
 
                             <div className="seller-notes mt-5">
                                 <h4>Seller Notes</h4>
-                                <p className="m-0">
-                                    Fusce viverra, ligula quis pellentesque
-                                    interdum, leo felis congue dui, ac accumsan
-                                    sem nulla id lorem. Praesent ut tristique
-                                    dui, nec condimentum lacus. Maecenas
-                                    lobortis ante id egestas placerat. Nullam at
-                                    ultricies lacus. Nam in nulla consectetur,
-                                    suscipit mauris eu, fringilla augue.
-                                    Phasellus gravida, dui quis dignissim
-                                    tempus, tortor orci tristique leo, ut congue
-                                    diam ipsum at massa. Pellentesque ut
-                                    vestibulum erat. Donec a felis eget tellus
-                                    laoreet ultrices.
-                                </p>
+                                <p className="m-0">{notes}</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-4 ps-4 ">
                         <div className="update-stock p-4">
                             <h4 className="mb-3">Update Your Stock</h4>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <input
                                     type="number"
-                                    name="quantity"
+                                    name="stock"
                                     id=""
                                     placeholder="Quantity of product"
+                                    onChange={handleStock}
                                 />
                                 <input type="submit" value="UPDATE" />
                             </form>
                         </div>
                         <div className="dealer-info mt-5 p-4">
-                            <h4 className="mb-4">West Covina Motors</h4>
+                            <h4 className="mb-4">{dName}</h4>
                             <div>
                                 <div className="dealer-logo d-flex  align-items-center justify-content-between">
                                     <img
                                         style={{ width: "50%" }}
-                                        src={d1}
+                                        src={dLogo}
                                         alt=""
                                     />
                                     <div>
@@ -223,7 +281,7 @@ const InventoryDetails = () => {
                                             className="me-3 icon"
                                             icon={faPhone}
                                         ></FontAwesomeIcon>
-                                        <span>+880161371257</span>
+                                        <span>{dPhone}</span>
                                     </div>
                                 </div>
                                 <div className="whatsup-btn my-3">
@@ -241,7 +299,7 @@ const InventoryDetails = () => {
                                             className="me-3 icon"
                                             icon={faLocationDot}
                                         ></FontAwesomeIcon>
-                                        <span>Kasba, Brahmanbaria.</span>
+                                        <span>{dLocation}</span>
                                     </div>
                                 </div>
                             </div>

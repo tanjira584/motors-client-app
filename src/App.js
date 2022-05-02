@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RequireAuth from "./Components/RequireAuth";
 import Blogs from "./Components/Pages/Blogs/Blogs";
 import AddItem from "./Components/Pages/AddItem/AddItem";
+import GetDealerShip from "./Components/Pages/GetDealerShip/GetDealerShip";
 
 function App() {
     return (
@@ -17,6 +18,10 @@ function App() {
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/login" element={<Auth></Auth>}></Route>
                 <Route path="/add-item" element={<AddItem></AddItem>}></Route>
+                <Route
+                    path="/add-dealer"
+                    element={<GetDealerShip></GetDealerShip>}
+                ></Route>
                 <Route
                     path="/blogs"
                     element={

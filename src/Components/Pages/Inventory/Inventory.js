@@ -4,8 +4,11 @@ import Header from "../../Share/Header/Header";
 import InventoryItem from "./InventoryItem";
 import "./Inventory.css";
 import InventorySidebar from "./InventorySidebar";
+import useMotors from "../../../hooks/useMotors";
 
 const Inventory = () => {
+    const [motors] = useMotors();
+
     return (
         <div>
             <Header></Header>
@@ -18,7 +21,12 @@ const Inventory = () => {
                         <h4>Manage Inventories</h4>
                         <hr />
                         <div className="all-items">
-                            <InventoryItem></InventoryItem>
+                            {motors.map((motor) => (
+                                <InventoryItem
+                                    key={motor._id}
+                                    motor={motor}
+                                ></InventoryItem>
+                            ))}
                         </div>
                     </div>
                 </div>
