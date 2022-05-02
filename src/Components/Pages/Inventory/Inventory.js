@@ -7,8 +7,24 @@ import InventorySidebar from "./InventorySidebar";
 import useMotors from "../../../hooks/useMotors";
 
 const Inventory = () => {
-    const [motors] = useMotors();
-
+    const [motors, setMotors] = useMotors();
+    const handleDelete = (id) => {
+        const proceed = window.confirm(
+            "Are you sure want to delete this item?"
+        );
+        if (proceed) {
+            const uri = `http://localhost:5000/motor/${id}`;
+            fetch(uri, {
+                method: "DELETE",
+            })
+                .then((res) => res.json())
+                .then((date) => {
+                    alert("Deleted Successfully");
+                    const remain = motors.filter((m) => m._id !== id);
+                    setMotors(remain);
+                });
+        }
+    };
     return (
         <div>
             <Header></Header>
@@ -25,6 +41,7 @@ const Inventory = () => {
                                 <InventoryItem
                                     key={motor._id}
                                     motor={motor}
+                                    handleDelete={handleDelete}
                                 ></InventoryItem>
                             ))}
                         </div>

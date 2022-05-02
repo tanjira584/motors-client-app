@@ -60,6 +60,22 @@ const InventoryDetails = () => {
                 setQty(0);
             });
     };
+    const handleDeliver = (id) => {
+        const uri = `http://localhost:5000/motor/${id}`;
+        fetch(uri, {
+            method: "PUT",
+            headers: {
+                delivered: true,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                alert("Delivered Successfull");
+                if (data.acknowledged) {
+                    setQty(stock - 1);
+                }
+            });
+    };
     return (
         <div>
             <Header></Header>
@@ -96,7 +112,11 @@ const InventoryDetails = () => {
                                     </h4>
                                 </div>
                                 <div className="delivered-btn">
-                                    <button>Delivered</button>
+                                    <button
+                                        onClick={() => handleDeliver(motor._id)}
+                                    >
+                                        Delivered
+                                    </button>
                                 </div>
                             </div>
                             <div className="img">

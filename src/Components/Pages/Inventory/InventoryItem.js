@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-const InventoryItem = ({ motor }) => {
+const InventoryItem = ({ motor, handleDelete }) => {
     const navigate = useNavigate();
     const {
         img,
@@ -18,6 +18,7 @@ const InventoryItem = ({ motor }) => {
         regular,
         normal,
     } = motor;
+
     return (
         <div className="home-item">
             <div className="row">
@@ -78,7 +79,9 @@ const InventoryItem = ({ motor }) => {
                                 </button>
                             </div>
                             <div className="delete-btn">
-                                <button>Delete Item</button>
+                                <button onClick={() => handleDelete(motor._id)}>
+                                    Delete Item
+                                </button>
                             </div>
                         </div>
                     </div>

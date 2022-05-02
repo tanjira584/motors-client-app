@@ -34,7 +34,6 @@ const AddItem = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(item);
         fetch("http://localhost:5000/motors", {
             method: "POST",
             headers: {

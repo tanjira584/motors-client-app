@@ -7,6 +7,6 @@ const useMotors = () => {
             .then((res) => res.json())
             .then((data) => setMotors(data));
     }, []);
-    return [motors];
+    return [motors, setMotors];
 };
 export default useMotors;
