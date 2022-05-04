@@ -21,3 +21,15 @@
     border: 1px solid #cccccc;
     margin-bottom: 12px;
 }
+.add-item-btn {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #1bc743;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none !important;
+    border-radius: 2px;
+    border: 1px solid #1bc743;
+}

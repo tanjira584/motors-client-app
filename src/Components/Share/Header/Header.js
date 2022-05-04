@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../images/logo.svg";
 import headerbg from "../../../images/header-bg.png";
 import "./Header.css";
@@ -9,6 +9,7 @@ import { signOut } from "firebase/auth";
 
 const Header = () => {
     const [auser, aloading, aerror] = useAuthState(auth);
+    const navigate = useNavigate();
     return (
         <div
             className="header-main"
@@ -40,14 +41,20 @@ const Header = () => {
                                     Home
                                 </Link>
                             </li>
-                            <li className="nav-item">
-                                <Link to="/blogs" className="nav-link">
-                                    Blogs
-                                </Link>
-                            </li>
+
                             <li className="nav-item">
                                 <Link to="/inventory" className="nav-link">
                                     Inventory
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/dealers" className="nav-link">
+                                    dealers
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/blogs" className="nav-link">
+                                    Blogs
                                 </Link>
                             </li>
                             {auser && (
@@ -60,11 +67,28 @@ const Header = () => {
                                     </button>
                                 </li>
                             )}
+                            {auser && (
+                                <li className="nav-item">
+                                    <Link to="/my-item" className="nav-link">
+                                        My Items
+                                    </Link>
+                                </li>
+                            )}
                             <li className="nav-item">
                                 <Link to="/login" className="nav-link">
                                     Login/Register
                                 </Link>
                             </li>
+                            {auser && (
+                                <li className="nav-item">
+                                    <button
+                                        onClick={() => navigate("/add-item")}
+                                        className="add-item-btn"
+                                    >
+                                        Add Item
+                                    </button>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>

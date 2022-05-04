@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
 import Footer from "../../Share/Footer/Footer";
 import Header from "../../Share/Header/Header";
-import InventoryItem from "./InventoryItem";
-import "./Inventory.css";
-import InventorySidebar from "./InventorySidebar";
-import useMotors from "../../../hooks/useMotors";
-import { useNavigate } from "react-router-dom";
+import InventoryItem from "../Inventory/InventoryItem";
+import InventorySidebar from "../Inventory/InventorySidebar";
 
-const Inventory = () => {
-    const [motors, setMotors] = useMotors();
+const MyItem = () => {
+    const [user] = useAuthState(auth);
+    const [items, setItems] = useState([]);
+    const token = localStorage.getItem("accessToken");
     const navigate = useNavigate();
+    useEffect(() => {
+        fetch(`http://localhost:5000/my-items?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${token}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setItems(data);
+            });
+    }, [user]);
     const handleDelete = (id) => {
         const proceed = window.confirm(
             "Are you sure want to delete this item?"
@@ -22,22 +35,22 @@ const Inventory = () => {
                 .then((res) => res.json())
                 .then((date) => {
                     alert("Deleted Successfully");
-                    const remain = motors.filter((m) => m._id !== id);
-                    setMotors(remain);
+                    const remain = items.filter((m) => m._id !== id);
+                    setItems(remain);
                 });
         }
     };
     return (
         <div>
             <Header></Header>
-            <div className="container py-5">
+            <div className="container-md py-5">
                 <div className="row">
                     <div className="col-md-3">
                         <InventorySidebar></InventorySidebar>
                     </div>
                     <div className="col-md-9">
                         <div className="d-flex align-items-center justify-content-between">
-                            <h4>Manage Inventories</h4>
+                            <h4>My Inventory Items</h4>
                             <button
                                 className="add-item-btn"
                                 onClick={() => navigate("/add-item")}
@@ -47,10 +60,10 @@ const Inventory = () => {
                         </div>
                         <hr />
                         <div className="all-items">
-                            {motors.map((motor) => (
+                            {items.map((item) => (
                                 <InventoryItem
-                                    key={motor._id}
-                                    motor={motor}
+                                    key={item._id}
+                                    motor={item}
                                     handleDelete={handleDelete}
                                 ></InventoryItem>
                             ))}
@@ -63,4 +76,4 @@ const Inventory = () => {
     );
 };
 
-export default Inventory;
+export default MyItem;

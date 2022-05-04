@@ -13,6 +13,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
+    const [token, setToken] = useState("");
 
     const [signInWithEmailAndPassword, euser, eloading, eerror] =
         useSignInWithEmailAndPassword(auth);
@@ -31,10 +32,22 @@ const Login = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user);
+
         signInWithEmailAndPassword(user.email, user.password);
-        e.target.reset();
-        setUser({ email: "", password: "" });
+        fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ email: user.email }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setToken(data.accessToken);
+                localStorage.setItem("accessToken", data.accessToken);
+                e.target.reset();
+                setUser({ email: "", password: "" });
+            });
     };
     const handlePasswordReset = async () => {
         await sendPasswordResetEmail(user.email);

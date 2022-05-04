@@ -60,6 +60,13 @@ const AddItem = () => {
                     regular: 0,
                     normal: 0,
                     notes: "",
+                    dName: "",
+                    dLogo: "",
+                    dLocation: "",
+                    dPhone: "",
+                    dWhatsup: "",
+                    dRating: 0,
+                    dEmail: "",
                 });
             })
             .catch((e) => {
@@ -453,6 +460,24 @@ const AddItem = () => {
                                                 id="dealer-name"
                                                 placeholder="Enter Dealer Name"
                                                 name="dName"
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="dealer-email"
+                                                className="form-label"
+                                            >
+                                                Dealer Email
+                                            </label>
+                                            <input
+                                                type="email"
+                                                className="form-control"
+                                                id="dealer-email"
+                                                placeholder="Enter Dealer Email"
+                                                name="dEmail"
                                                 onChange={handleChange}
                                             />
                                         </div>

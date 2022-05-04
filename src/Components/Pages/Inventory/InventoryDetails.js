@@ -12,13 +12,14 @@ import {
 import "./InventoryDetails.css";
 import { faStarHalfAlt } from "@fortawesome/free-regular-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useMotor from "../../../hooks/useMotor";
 
 const InventoryDetails = () => {
     const { id } = useParams();
     const [quantity, setQty] = useState(0);
     const [motor] = useMotor(id, quantity);
+    const navigate = useNavigate();
     const {
         condition,
         make,
@@ -80,7 +81,15 @@ const InventoryDetails = () => {
         <div>
             <Header></Header>
             <div className="container py-5">
-                <h2 className="">This is inventory details</h2>
+                <div className="d-flex align-items-center justify-content-between">
+                    <h2 className="">This is inventory details</h2>
+                    <button
+                        className="add-item-btn"
+                        onClick={() => navigate("/inventory")}
+                    >
+                        Manage Inventories
+                    </button>
+                </div>
                 <hr />
                 <div className="row py-5">
                     <div className="col-md-8">
