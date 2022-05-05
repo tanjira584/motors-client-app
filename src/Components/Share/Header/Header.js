@@ -69,7 +69,7 @@ const Header = () => {
                             )}
                             {auser && (
                                 <li className="nav-item">
-                                    <Link to="/my-item" className="nav-link">
+                                    <Link to="/my-items" className="nav-link">
                                         My Items
                                     </Link>
                                 </li>
