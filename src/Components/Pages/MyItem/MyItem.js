@@ -8,27 +8,37 @@ import InventoryItem from "../Inventory/InventoryItem";
 import InventorySidebar from "../Inventory/InventorySidebar";
 
 const MyItem = () => {
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const [items, setItems] = useState([]);
     const token = localStorage.getItem("accessToken");
     const navigate = useNavigate();
+
+    /*--------------------GEt a JWT token-------------*/
     useEffect(() => {
-        fetch(`http://localhost:5000/my-items?email=${user.email}`, {
-            headers: {
-                authorization: `Bearer ${token}`,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setItems(data);
-            });
-    }, [user]);
+        if (!loading) {
+            fetch(
+                `https://serene-chamber-17586.herokuapp.com/my-items?email=${user.email}`,
+                {
+                    method: "GET",
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                }
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    setItems(data);
+                });
+        }
+    }, [user, token, loading]);
+
+    /*---------------Handle Delete single inventory--------------*/
     const handleDelete = (id) => {
         const proceed = window.confirm(
             "Are you sure want to delete this item?"
         );
         if (proceed) {
-            const uri = `http://localhost:5000/motor/${id}`;
+            const uri = `https://serene-chamber-17586.herokuapp.com/motor/${id}`;
             fetch(uri, {
                 method: "DELETE",
             })
@@ -44,7 +54,7 @@ const MyItem = () => {
         <div>
             <Header></Header>
             <div className="container-md py-5">
-                <div className="row">
+                <div className="row g-5">
                     <div className="col-md-3">
                         <InventorySidebar></InventorySidebar>
                     </div>
@@ -59,15 +69,32 @@ const MyItem = () => {
                             </button>
                         </div>
                         <hr />
-                        <div className="all-items">
-                            {items.map((item) => (
-                                <InventoryItem
-                                    key={item._id}
-                                    motor={item}
-                                    handleDelete={handleDelete}
-                                ></InventoryItem>
-                            ))}
-                        </div>
+                        {loading ? (
+                            <div className="spin">
+                                <div
+                                    className="spinner-border text-danger"
+                                    role="status"
+                                >
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="all-items">
+                                {items.length > 0 ? (
+                                    items.map((item) => (
+                                        <InventoryItem
+                                            key={item._id}
+                                            motor={item}
+                                            handleDelete={handleDelete}
+                                        ></InventoryItem>
+                                    ))
+                                ) : (
+                                    <p>You have not any Inventory..</p>
+                                )}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

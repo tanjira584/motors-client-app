@@ -1,9 +1,7 @@
-import { sendEmailVerification } from "firebase/auth";
 import React, { useState } from "react";
 import {
     useCreateUserWithEmailAndPassword,
     useUpdateProfile,
-    useAuthState,
 } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import auth from "../../../../src/firebase.init";
@@ -11,17 +9,25 @@ import auth from "../../../../src/firebase.init";
 const Signup = () => {
     const [user, setUser] = useState({ name: "", email: "", password: "" });
 
-    const [createUserWithEmailAndPassword, euser, loading, error] =
+    const [createUserWithEmailAndPassword, , loading] =
         useCreateUserWithEmailAndPassword(auth, {
             sendEmailVerification: true,
         });
-    const [updateProfile, updating, uerror] = useUpdateProfile(auth);
-    const [auser, aloading, aerror] = useAuthState(auth);
+    const [updateProfile] = useUpdateProfile(auth);
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
-
+    if (loading) {
+        return (
+            <div className="spin">
+                <div className="spinner-border text-danger" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    /*-----------Handle Sign up Form----*/
     const handleSubmit = (e) => {
         e.preventDefault();
         createUserWithEmailAndPassword(user.email, user.password);

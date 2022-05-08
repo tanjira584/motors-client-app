@@ -13,7 +13,7 @@ const Footer = () => {
     return (
         <div className="footer-area">
             <div className="container-md">
-                <div className="footer-top d-flex align-items-center justify-content-between">
+                <div className="footer-top d-lg-flex align-items-center justify-content-between">
                     <div className="search-box">
                         <div className="input-group mb-3">
                             <input
@@ -31,7 +31,7 @@ const Footer = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="footer-link">
+                    <div className="footer-link text-center text-lg-start">
                         <ul className="list-unstyled m-0 p-0">
                             <li>
                                 <a href=" ">help</a>
@@ -46,14 +46,14 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr style={{ border: "1px solid #fff" }} />
-                <div className="footer-bottom d-flex align-items-center justify-content-between">
-                    <div className="copy-right">
-                        <p>
+                <div className="footer-bottom d-lg-flex align-items-center justify-content-between">
+                    <div className="copy-right mb-3 mb-lg-0">
+                        <p className="text-center text-lg-start">
                             Copyright © 2021. Motors – React Theme by Tanjir
                             Ahmed
                         </p>
                     </div>
-                    <div className="footer-social">
+                    <div className="footer-social text-center text-lg-start">
                         <ul>
                             <li>
                                 <FontAwesomeIcon

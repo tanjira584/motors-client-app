@@ -5,7 +5,7 @@ const useToken = (user) => {
     useEffect(() => {
         const email = user?.user?.email;
         if (email) {
-            fetch(`http://localhost:5000/login`, {
+            fetch(`https://serene-chamber-17586.herokuapp.com/login`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",

@@ -8,14 +8,16 @@ import useMotors from "../../../hooks/useMotors";
 import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
-    const [motors, setMotors] = useMotors();
+    const [motors, , setMotors] = useMotors();
     const navigate = useNavigate();
+
+    /*-----------Handle Delete Single Item----------*/
     const handleDelete = (id) => {
         const proceed = window.confirm(
             "Are you sure want to delete this item?"
         );
         if (proceed) {
-            const uri = `http://localhost:5000/motor/${id}`;
+            const uri = `https://serene-chamber-17586.herokuapp.com/motor/${id}`;
             fetch(uri, {
                 method: "DELETE",
             })
@@ -31,7 +33,7 @@ const Inventory = () => {
         <div>
             <Header></Header>
             <div className="container py-5">
-                <div className="row">
+                <div className="row g-5">
                     <div className="col-md-3">
                         <InventorySidebar></InventorySidebar>
                     </div>

@@ -13,28 +13,37 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
-    const [token, setToken] = useState("");
 
     const [signInWithEmailAndPassword, euser, eloading, eerror] =
         useSignInWithEmailAndPassword(auth);
 
-    const [sendPasswordResetEmail, sending, error] =
-        useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-    const [signInWithGoogle, guser, gloading, gerror] =
-        useSignInWithGoogle(auth);
+    const [signInWithGoogle, guser, gloading] = useSignInWithGoogle(auth);
+
     if (euser || guser) {
         navigate(from, { replace: true });
         toast("Logged in successfully");
     }
+
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
+    let err;
+    if (eerror) {
+        console.log(eerror.message);
+        err = eerror.message;
+    }
+    /*----------Handle Form Submit-------*/
     const handleSubmit = (e) => {
         e.preventDefault();
 
         signInWithEmailAndPassword(user.email, user.password);
-        fetch("http://localhost:5000/login", {
+    };
+
+    /*---------------Get JWT Token------------*/
+    if (euser) {
+        fetch("https://serene-chamber-17586.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -43,21 +52,29 @@ const Login = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                setToken(data.accessToken);
                 localStorage.setItem("accessToken", data.accessToken);
-                e.target.reset();
-                setUser({ email: "", password: "" });
             });
-    };
+    }
+    if (eloading || gloading) {
+        return (
+            <div className="spin">
+                <div className="spinner-border text-danger" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+    /*-------Password Reset -------*/
     const handlePasswordReset = async () => {
         await sendPasswordResetEmail(user.email);
         toast("Sent a password reset email");
     };
+
     return (
         <div>
             <h3 className="mb-4">Login </h3>
 
-            <div className="me-4">
+            <div className="me-lg-4">
                 <div className="google-login px-5 py-3">
                     <button onClick={() => signInWithGoogle()}>
                         Login With Google
@@ -73,6 +90,7 @@ const Login = () => {
                     <div className="mx-4">OR</div>
                     <div className="w-50 border"></div>
                 </div>
+                <p className="text-danger m-0">{err}</p>
                 <form className="p-5 login-form" onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label

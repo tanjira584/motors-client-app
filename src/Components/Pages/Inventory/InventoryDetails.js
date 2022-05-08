@@ -43,10 +43,12 @@ const InventoryDetails = () => {
     const handleStock = (e) => {
         setQty(e.target.value);
     };
+
+    /*------------Update Stock------------*/
     const handleSubmit = (e) => {
         e.preventDefault();
         const qty = parseInt(quantity);
-        const uri = `http://localhost:5000/motor/${id}`;
+        const uri = `https://serene-chamber-17586.herokuapp.com/motor/${id}`;
         fetch(uri, {
             method: "PUT",
             headers: {
@@ -61,8 +63,10 @@ const InventoryDetails = () => {
                 setQty(0);
             });
     };
+
+    /*-----------Handle Delivered-----------*/
     const handleDeliver = (id) => {
-        const uri = `http://localhost:5000/motor/${id}`;
+        const uri = `https://serene-chamber-17586.herokuapp.com/motor/${id}`;
         fetch(uri, {
             method: "PUT",
             headers: {
@@ -91,7 +95,7 @@ const InventoryDetails = () => {
                     </button>
                 </div>
                 <hr />
-                <div className="row py-5">
+                <div className="row py-5 g-5">
                     <div className="col-md-8">
                         <div className="inventory-details">
                             <div className="modelPrice d-flex justify-content-between">

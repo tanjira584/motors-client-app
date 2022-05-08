@@ -8,20 +8,20 @@ import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
-    const [auser, aloading, aerror] = useAuthState(auth);
+    const [auser] = useAuthState(auth);
     const navigate = useNavigate();
     return (
         <div
             className="header-main"
             style={{ backgroundImage: `url(${headerbg})` }}
         >
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-md">
                     <Link to="/" className="navbar-brand">
                         <img src={logo} alt="" />
                     </Link>
                     <button
-                        className="navbar-toggler"
+                        className="navbar-toggler text-light"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
@@ -29,7 +29,7 @@ const Header = () => {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon text-light"></span>
                     </button>
                     <div
                         className="collapse navbar-collapse"

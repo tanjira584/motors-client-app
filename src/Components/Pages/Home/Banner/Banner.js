@@ -20,8 +20,8 @@ const Banner = () => {
             </div>
             <div className="container">
                 <div className="stm-filter-wrp">
-                    <div className="d-flex align-items-center">
-                        <div className="filter-box">
+                    <div className="row g-3">
+                        <div className="col-lg-3 filter-box">
                             <div className="choose-maker">
                                 <select name="" id="">
                                     <option value="">Choose Make</option>
@@ -34,7 +34,7 @@ const Banner = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="filter-box">
+                        <div className="col-lg-3 filter-box">
                             <div className="choose-maker">
                                 <select name="" id="">
                                     <option value="">Choose Model</option>
@@ -47,20 +47,8 @@ const Banner = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="filter-box">
-                            <div className="choose-maker">
-                                <select name="" id="">
-                                    <option value="">Max Price</option>
-                                    <option value="">Honda</option>
-                                    <option value="">KIA</option>
-                                    <option value="">Bently</option>
-                                    <option value="">BMW</option>
-                                    <option value="">Ford</option>
-                                    <option value="">Acura</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="filter-box">
+
+                        <div className="col-lg-3 filter-box">
                             <div className="filter-location">
                                 <input
                                     type="text"
@@ -70,7 +58,7 @@ const Banner = () => {
                                 />
                             </div>
                         </div>
-                        <div className="filter-box">
+                        <div className="col-lg-3 filter-box">
                             <div className="filter-btn">
                                 <button type="submit">
                                     <FontAwesomeIcon

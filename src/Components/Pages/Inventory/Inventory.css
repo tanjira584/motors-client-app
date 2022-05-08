@@ -33,3 +33,11 @@
     border-radius: 2px;
     border: 1px solid #1bc743;
 }
+.spin {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

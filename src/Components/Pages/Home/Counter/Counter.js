@@ -15,7 +15,7 @@ const Counter = () => {
             style={{ backgroundImage: `url(${counter})` }}
         >
             <div className="container-md py-5">
-                <div className="row">
+                <div className="row g-5">
                     <div className="col-md-3">
                         <div className="count d-flex align-items-center justify-content-center text-light">
                             <div className="count-icon">

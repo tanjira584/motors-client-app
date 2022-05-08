@@ -17,13 +17,13 @@ const BrowseType = () => {
     return (
         <div className="">
             <div className="container-md">
-                <div className="row browse-type py-5">
+                <div className="row g-5 browse-type py-5">
                     <div className="col-md-6">
-                        <h4 className="mb-4">
+                        <h4 className="mb-4 text-center">
                             Browse by{" "}
                             <span style={{ color: "#1BC744" }}>Make</span>
                         </h4>
-                        <div className="row g-4 me-4">
+                        <div className="row g-4 me-lg-4">
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={frod} alt="" />
@@ -63,11 +63,11 @@ const BrowseType = () => {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <h4 className="mb-4 ms-4">
+                        <h4 className="mb-4 ms-4 text-center">
                             Browse by{" "}
                             <span style={{ color: "#1BC744" }}>Types</span>
                         </h4>
-                        <div className="row ms-4 g-4">
+                        <div className="row ms-lg-4 g-4">
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={convertible} alt="" />

@@ -11,7 +11,7 @@ const Auth = () => {
             <Header></Header>
             <div className="auth-area">
                 <div className="container-md py-5">
-                    <div className="row">
+                    <div className="row g-5">
                         <div className="col-lg-6">
                             <Login></Login>
                         </div>

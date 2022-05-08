@@ -32,9 +32,11 @@ const AddItem = () => {
     const handleChange = (e) => {
         setItem({ ...item, [e.target.name]: e.target.value });
     };
+
+    /*------------Handle ADD NEW ITEM------------*/
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch("http://localhost:5000/motors", {
+        fetch("https://serene-chamber-17586.herokuapp.com/motors", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -217,7 +219,7 @@ const AddItem = () => {
                                             </label>
                                             <div className="col-sm-8">
                                                 <input
-                                                    type="number"
+                                                    type="text"
                                                     className="form-control"
                                                     id="engine"
                                                     name="engine"
@@ -372,7 +374,7 @@ const AddItem = () => {
                             </div>
                             <div className="item-img-price mt-4">
                                 <div className="d-flex align-items-center justify-content-between mb-4">
-                                    <h5>Upload Image & Set Asking Price*($)</h5>
+                                    <h5>Set Image & Price*($)</h5>
                                     <h5 style={{ color: "#1BC744" }}>Step 2</h5>
                                 </div>
                                 <div className="row">
