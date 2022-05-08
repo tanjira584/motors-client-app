@@ -81,9 +81,9 @@ const Login = () => {
                     </button>
                     <span>For testing:</span>
                     <br />
-                    <span>Email: demo@gmail.com</span>
+                    <span>Email: abc@gmail.com</span>
                     <br />
-                    <span>Pass: demo1234</span>
+                    <span>Pass: 12345678</span>
                 </div>
                 <div className="d-flex align-items-center">
                     <div className="w-50 border"></div>

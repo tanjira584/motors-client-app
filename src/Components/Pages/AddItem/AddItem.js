@@ -1,11 +1,22 @@
-import { faRoad } from "@fortawesome/free-solid-svg-icons";
+import {
+    faArrowUpWideShort,
+    faGasPump,
+    faPalette,
+    faRoad,
+    faStore,
+    faTrainTram,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 import Footer from "../../Share/Footer/Footer";
 import Header from "../../Share/Header/Header";
 import "./AddItem.css";
 
 const AddItem = () => {
+    const [user] = useAuthState(auth);
+
     const [item, setItem] = useState({
         condition: "",
         make: "",
@@ -213,7 +224,7 @@ const AddItem = () => {
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
-                                                    icon={faRoad}
+                                                    icon={faTrainTram}
                                                 ></FontAwesomeIcon>
                                                 Engine
                                             </label>
@@ -237,7 +248,7 @@ const AddItem = () => {
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
-                                                    icon={faRoad}
+                                                    icon={faGasPump}
                                                 ></FontAwesomeIcon>
                                                 Fuel Type
                                             </label>
@@ -278,7 +289,7 @@ const AddItem = () => {
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
-                                                    icon={faRoad}
+                                                    icon={faArrowUpWideShort}
                                                 ></FontAwesomeIcon>
                                                 Transmission
                                             </label>
@@ -313,7 +324,7 @@ const AddItem = () => {
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
-                                                    icon={faRoad}
+                                                    icon={faPalette}
                                                 ></FontAwesomeIcon>
                                                 Color
                                             </label>
@@ -354,7 +365,7 @@ const AddItem = () => {
                                             >
                                                 <FontAwesomeIcon
                                                     className="icon me-2"
-                                                    icon={faRoad}
+                                                    icon={faStore}
                                                 ></FontAwesomeIcon>
                                                 Stock*
                                             </label>
@@ -479,8 +490,10 @@ const AddItem = () => {
                                                 className="form-control"
                                                 id="dealer-email"
                                                 placeholder="Enter Dealer Email"
+                                                value={user.email}
                                                 name="dEmail"
                                                 onChange={handleChange}
+                                                disabled
                                             />
                                         </div>
                                     </div>

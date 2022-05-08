@@ -3,11 +3,17 @@ import Footer from "../../Share/Footer/Footer";
 import Header from "../../Share/Header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+    faArrowUpWideShort,
+    faCar,
     faGasPump,
+    faIndustry,
     faLocationDot,
+    faPalette,
     faPhone,
     faRoad,
     faStar,
+    faStore,
+    faTrainTram,
 } from "@fortawesome/free-solid-svg-icons";
 import "./InventoryDetails.css";
 import { faStarHalfAlt } from "@fortawesome/free-regular-svg-icons";
@@ -127,6 +133,7 @@ const InventoryDetails = () => {
                                 <div className="delivered-btn">
                                     <button
                                         onClick={() => handleDeliver(motor._id)}
+                                        disabled={stock === 0}
                                     >
                                         Delivered
                                     </button>
@@ -144,7 +151,7 @@ const InventoryDetails = () => {
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
                                         <div>
                                             <FontAwesomeIcon
-                                                icon={faRoad}
+                                                icon={faIndustry}
                                                 className="icon"
                                             ></FontAwesomeIcon>
                                             <span>Make</span>
@@ -156,7 +163,7 @@ const InventoryDetails = () => {
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
                                         <div>
                                             <FontAwesomeIcon
-                                                icon={faRoad}
+                                                icon={faCar}
                                                 className="icon"
                                             ></FontAwesomeIcon>
                                             <span>Type</span>
@@ -168,7 +175,7 @@ const InventoryDetails = () => {
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
                                         <div>
                                             <FontAwesomeIcon
-                                                icon={faRoad}
+                                                icon={faStore}
                                                 className="icon"
                                             ></FontAwesomeIcon>
                                             <span>Stock Id</span>
@@ -204,7 +211,7 @@ const InventoryDetails = () => {
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
                                         <div>
                                             <FontAwesomeIcon
-                                                icon={faGasPump}
+                                                icon={faTrainTram}
                                                 className="icon"
                                             ></FontAwesomeIcon>
                                             <span>Engine</span>
@@ -216,7 +223,7 @@ const InventoryDetails = () => {
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
                                         <div>
                                             <FontAwesomeIcon
-                                                icon={faGasPump}
+                                                icon={faArrowUpWideShort}
                                                 className="icon"
                                             ></FontAwesomeIcon>
                                             <span>Transmission</span>
@@ -228,7 +235,7 @@ const InventoryDetails = () => {
                                     <li className="border-bottom d-flex align-items-center justify-content-between">
                                         <div>
                                             <FontAwesomeIcon
-                                                icon={faGasPump}
+                                                icon={faPalette}
                                                 className="icon"
                                             ></FontAwesomeIcon>
                                             <span>Color</span>

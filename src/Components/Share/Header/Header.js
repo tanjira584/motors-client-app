@@ -57,6 +57,14 @@ const Header = () => {
                                     Blogs
                                 </Link>
                             </li>
+
+                            {auser && (
+                                <li className="nav-item">
+                                    <Link to="/my-items" className="nav-link">
+                                        My Items
+                                    </Link>
+                                </li>
+                            )}
                             {auser && (
                                 <li className="nav-item">
                                     <button
@@ -65,13 +73,6 @@ const Header = () => {
                                     >
                                         Signout
                                     </button>
-                                </li>
-                            )}
-                            {auser && (
-                                <li className="nav-item">
-                                    <Link to="/my-items" className="nav-link">
-                                        My Items
-                                    </Link>
                                 </li>
                             )}
                             <li className="nav-item">
