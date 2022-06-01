@@ -19,3 +19,14 @@
     font-size: 14px;
     color: #fff;
 }
+.header-top {
+    padding: 10px 0;
+    background-color: #153e4d;
+}
+.header-social ul {
+    list-style: none;
+}
+.header-social ul li {
+    margin-left: 12px;
+    color: #6c757d;
+}
