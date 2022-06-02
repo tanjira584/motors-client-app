@@ -5,11 +5,33 @@ import InventoryItem from "./InventoryItem";
 import "./Inventory.css";
 import InventorySidebar from "./InventorySidebar";
 import useMotors from "../../../hooks/useMotors";
-import { useNavigate } from "react-router-dom";
+import {
+    useLocation,
+    useNavigate,
+    useParams,
+    useSearchParams,
+} from "react-router-dom";
 
 const Inventory = () => {
-    const [motors, , setMotors] = useMotors();
     const navigate = useNavigate();
+    const search = useLocation().search;
+    const make = new URLSearchParams(search).get("make");
+    const type = new URLSearchParams(search).get("type");
+    const price = new URLSearchParams(search).get("price");
+    const model = new URLSearchParams(search).get("model");
+    const transmission = new URLSearchParams(search).get("transmission");
+    const color = new URLSearchParams(search).get("color");
+    const fuel = new URLSearchParams(search).get("fuel");
+    console.log(make, type, price, model, transmission, color, fuel);
+    const [motors, , setMotors] = useMotors({
+        make,
+        type,
+        price,
+        model,
+        transmission,
+        color,
+        fuel,
+    });
 
     /*-----------Handle Delete Single Item----------*/
     const handleDelete = (id) => {

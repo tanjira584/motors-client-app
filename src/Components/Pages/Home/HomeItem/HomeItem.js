@@ -5,7 +5,7 @@ import "./HomeItem.css";
 import Item from "./Item";
 
 const HomeItem = () => {
-    const [motors, load] = useMotors();
+    const [motors, load] = useMotors({});
     const navigate = useNavigate();
 
     return (

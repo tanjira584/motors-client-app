@@ -12,6 +12,7 @@ import sedan from "../../../../images/sedan.png";
 import sport from "../../../../images/sport.png";
 import suv from "../../../../images/suv.png";
 import "./BrowseType.css";
+import { Link } from "react-router-dom";
 
 const BrowseType = () => {
     return (
@@ -27,37 +28,61 @@ const BrowseType = () => {
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={frod} alt="" />
-                                    <h6>Frod</h6>
+                                    <h6>
+                                        <Link to="/inventory?make=ford">
+                                            Ford
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={bently} alt="" />
-                                    <h6>Bentley</h6>
+                                    <h6>
+                                        <Link to="/inventory?make=bently">
+                                            Bently
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={acura} alt="" />
-                                    <h6>Acura</h6>
+                                    <h6>
+                                        <Link to="/inventory?make=acura">
+                                            Acura
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={hyundai} alt="" />
-                                    <h6>Hyundai</h6>
+                                    <h6>
+                                        <Link to="/inventory?make=hyundai">
+                                            Hyundai
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={kia} alt="" />
-                                    <h6>KIA</h6>
+                                    <h6>
+                                        <Link to="/inventory?make=kia">
+                                            KIA
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="make">
                                     <img src={bmw} alt="" />
-                                    <h6>BMW</h6>
+                                    <h6>
+                                        <Link to="/inventory?make=bmw">
+                                            BMW
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                         </div>
@@ -71,37 +96,61 @@ const BrowseType = () => {
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={convertible} alt="" />
-                                    <h6>Convertible</h6>
+                                    <h6>
+                                        <Link to="/inventory?type=convertible">
+                                            Convertible
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={pickup} alt="" />
-                                    <h6>Pickups</h6>
+                                    <h6>
+                                        <Link to="/inventory?type=pickups">
+                                            Pickups
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={minivan} alt="" />
-                                    <h6>Minivan</h6>
+                                    <h6>
+                                        <Link to="/inventory?type=minivan">
+                                            Minivan
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={sedan} alt="" />
-                                    <h6>Sedan</h6>
+                                    <h6>
+                                        <Link to="/inventory?type=sedan">
+                                            Sedan
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={sport} alt="" />
-                                    <h6>Sports</h6>
+                                    <h6>
+                                        <Link to="/inventory?type=sports">
+                                            Sports
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="type">
                                     <img src={suv} alt="" />
-                                    <h6>SUV</h6>
+                                    <h6>
+                                        <Link to="/inventory?type=suv">
+                                            SUV
+                                        </Link>
+                                    </h6>
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,7 @@ import "./Header.css";
 
 const HeaderTop = () => {
     return (
-        <div className="header-top">
+        <div className="header-top d-none d-md-block">
             <div className="container-md">
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="text-light">
